@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import axios from "axios";
 
 import { addLocation } from "./mongodb";
 import { SLOTS_URL } from "./constants";
@@ -22,16 +23,15 @@ app.get("/location/:locationId", async (req, res) => {
     res.send("You fucked up");
   }
 
-  const slots = await fetch(
-    SLOTS_URL +
-      new URLSearchParams({
-        orderBy: "soonest",
-        limit: String(1),
-        locationId,
-        minimum: String(1),
-      }).toString()
-  );
-  const data = await slots.json();
+  const { data }: axios.AxiosResponse = await axios.get(SLOTS_URL, {
+    params: {
+      orderBy: "soonest",
+      limit: String(1),
+      locationId,
+      minimum: String(1),
+    },
+  });
+
   const appointment = data[0];
   const isAvailable =
     appointment &&
