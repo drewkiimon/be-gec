@@ -18,7 +18,7 @@
   "main": "src/index.js",
   "name": "be-gec",
   "scripts": {
-    "build": "tsc",
+    "build": "npm install; tsc",
     "dev": "nodemon ./src/index.ts",
     "prod": "node ./dist/index.js"
   },
