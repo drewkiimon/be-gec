@@ -54,6 +54,12 @@ app.get("/location/:locationId", async (req, res) => {
     isAppointmentAvailable: !!isAvailable,
   });
 
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "DELETE, PUT");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   res.send(result);
 });
 
