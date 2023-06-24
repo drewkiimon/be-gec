@@ -12,20 +12,18 @@ const client = new MongoClient(String(DB_URI), {
 });
 
 type LocationSchema = {
+  collection: any;
   locationId: string;
   availableTime: string | null;
   isAppointmentAvailable: boolean;
 };
 export async function addLocation({
+  collection,
   locationId,
   availableTime,
   isAppointmentAvailable,
 }: LocationSchema) {
   try {
-    await client.connect();
-    const database = client.db(String(DB_NAME));
-    const collection = database.collection(String(COLLECTION_NAME));
-
     await collection.insertOne({
       locationId,
       availableTime,
@@ -34,7 +32,5 @@ export async function addLocation({
     });
   } catch (err) {
     console.log(`Error occured for location ${locationId}: ${err}`);
-  } finally {
-    await client.close();
   }
 }
