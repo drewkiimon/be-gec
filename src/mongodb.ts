@@ -32,6 +32,8 @@ export async function addLocation({
       isAppointmentAvailable,
       timestamp: new Date().toISOString(),
     });
+  } catch (err) {
+    console.log(`Error occured for location ${locationId}: ${err}`);
   } finally {
     await client.close();
   }
