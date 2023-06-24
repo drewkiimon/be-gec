@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 
 import { addLocation } from "./mongodb";
@@ -56,4 +57,4 @@ app.get("/location/:locationId", async (req, res) => {
   res.send(result);
 });
 
-app.listen(3000);
+app.listen(process.env.PORT ?? 3000);
