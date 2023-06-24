@@ -44,7 +44,7 @@ app.get("/location/:locationId", async (req, res) => {
         locationId,
         time: data[0].startTimestamp,
       }
-    : null;
+    : {};
 
   addLocation({
     locationId,
