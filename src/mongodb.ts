@@ -34,6 +34,5 @@ export async function addLocation({
     });
   } finally {
     await client.close();
-    console.log("Connection closed");
   }
 }
