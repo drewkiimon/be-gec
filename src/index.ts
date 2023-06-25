@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 
-import locationRoutes from './routes/locations';
+import locationRoutes from './routes/location';
 
 const app: express.Express = express();
 

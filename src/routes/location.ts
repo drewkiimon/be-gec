@@ -34,11 +34,11 @@ router.get('/:locationId', async (req, res) => {
   });
 
   const appointment = data[0];
-  const isAvailable =
-    appointment?.locationId !== undefined &&
-    appointment?.startTimestamp !== undefined &&
-    appointment?.active !== undefined &&
-    true;
+  const isAvailable = ![
+    appointment?.locationId,
+    appointment?.startTimestamp,
+    appointment?.active,
+  ].includes(undefined);
 
   const result = isAvailable
     ? {

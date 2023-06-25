@@ -45,6 +45,7 @@ const addLocation = async ({ collection, location }: Params): Promise<void> => {
       ...location,
       timestamp: new Date().toISOString(),
     });
+    console.log(`Location ${location.locationId} inserted into collection.`);
   } catch (err) {
     if (typeof err === 'string') {
       console.log(`Error occured for location ${location.locationId}: ${err}`);
